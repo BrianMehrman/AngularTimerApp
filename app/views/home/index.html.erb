@@ -1,0 +1,20 @@
+<div id="home_hero">
+</div>
+<div id="welcome_panel">
+  <h2>Welcome</h2>
+  <p>Sign Up to see what we are all about</p>
+</div>
+<div id="action_panel">
+  <h2>Explore Our Site</h2>
+  <div class="public_tasks">
+    <ul class="tasks">
+      <% Task.where(:is_public=>true).each do |task| %>
+      <li class="<%= task.complete ? 'completed' : 'incomplete' %>">
+        <div><%= task.name %></div>
+        <div><%= task.description %></div>
+        <div><%= task.due_date %></div>
+      </li>
+      <% end -%>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<h1>Listing tasks</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Due date</th>
+      <th>Complete</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tasks.each do |task| %>
+      <tr class="<%= task.complete ? 'completed' : 'incomplete' %>">
+        <td><%= task.name %></td>
+        <td><%= task.description %></td>
+        <td><%= time_ago_in_words(task.due_date) %> <%= time_tense(task.due_date) %></td>
+
+        <td><%= link_to 'Show', task %></td>
+        <% if user_signed_in? %>
+          <td><%= link_to 'Edit', edit_task_path(task) %></td>
+          <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end -%>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Task', new_task_path %>
