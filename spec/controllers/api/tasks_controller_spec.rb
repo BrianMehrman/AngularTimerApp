@@ -25,16 +25,16 @@ describe Api::TasksController do
     end
 
     it "should return 200 OK" do
-        post_create
-        response.should be_success
-      end
+      post_create
+      response.should be_success
+    end
 
     it "should return json of the just created record" do
-        post_create
-        json_response["id"].should == be_an(Integer)
-        json_response["complete"].should == false
-        json_response["description"].should == "New task"
-        json_response["due_date"].should == nil
+      post_create
+      json_response["id"].should == be_an(Integer)
+      json_response["complete"].should == false
+      json_response["description"].should == "New task"
+      json_response["due_date"].should == nil
     end
   end
 

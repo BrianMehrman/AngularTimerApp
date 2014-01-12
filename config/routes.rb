@@ -6,7 +6,7 @@ TimerApp::Application.routes.draw do
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   namespace :api, defaults: {format: :json} do
-    resources :task_lists, only: [:index] do
+    resources :task_lists, only: [:index,:create] do
       resources :tasks, only: [:index, :create, :update, :destory]
     end
   end

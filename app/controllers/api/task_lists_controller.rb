@@ -1,5 +1,7 @@
 class Api::TaskListsController < ApplicationController
   respond_to :json
+  before_filter :authenticate_user!
+
   before_action :check_owner, only: [:show, :update, :destroy]
 
   def index
@@ -7,6 +9,8 @@ class Api::TaskListsController < ApplicationController
   end
 
   def create
+    list =current_user.task_lists.create!(safe_params)
+    respond_with(list)
   end
 
   private
