@@ -1,4 +1,4 @@
-angular.module('timerApp').controller "TodoListController", ($scope, $timeout, $routeParams, Task, TaskList) ->
+@timerApp.controller "TodoListController", ($scope, $timeout, $routeParams, Task, TaskList) ->
 
   $scope.init = () ->
     @taskService = new Task($routeParams.list_id, serverErrorHandler)

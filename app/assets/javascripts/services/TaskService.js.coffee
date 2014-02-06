@@ -1,4 +1,4 @@
-angular.module('timerApp').factory 'Task', ($resource, $http) ->
+@timerApp.factory 'Task', ($resource, $http) ->
   class Task
     constructor: (taskListId, errorHandler) ->
       @service = $resource('/api/task_lists/:task_list_id/tasks/:id',

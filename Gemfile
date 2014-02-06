@@ -24,6 +24,10 @@ gem 'devise'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 
+gem "therubyracer"
+gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
+gem "twitter-bootstrap-rails"
+
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 
@@ -51,6 +55,9 @@ group :test do
   gem 'factory_girl'
 end
 
+group :test, :development do
+  gem 'jasmine'
+end
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 

@@ -14,7 +14,8 @@ TimerApp::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'home#index'
-
+  get '/home/try_it' => 'home#index'
+  get '/home/:path.html' => 'home#page', :constraints => { :path => /.+/  }
   get '/dashboard' => 'templates#index'
   get '/task_lists/:id' => 'templates#index'
   get '/templates/:path.html' => 'templates#template', :constraints => { :path => /.+/  }

@@ -1,0 +1,15 @@
+
+.ng-cloak{"ng-init"=>"init()"}
+  %h2 Explore Our Site
+
+  %div.public_tasks
+    %p
+      Check out these sample tasks
+    %ul.tasks
+      %li{"ng-class"=>"{completed:task.complete}", "ng-repeat"=>"task in tasks"}
+        %div {{task.name}}
+        %div {{task.description}}
+        %div {{task.due_date}}
+
+  %div.try_it
+    %a{:href=>"/home/try_it"}

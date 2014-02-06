@@ -1,4 +1,4 @@
-angular.module('timerApp').controller "DashboardController", ($scope, $routeParams, $location, TaskList) ->
+@timerApp.controller "DashboardController", ($scope, $routeParams, $location, TaskList) ->
 
   $scope.init = ->
     @listsService = new TaskList(serverErrorHandler)
