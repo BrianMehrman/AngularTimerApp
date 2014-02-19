@@ -8,7 +8,6 @@ development:
   encoding: unicode
   database: timer_app_development
   pool: 5
-  username: root
   host: localhost
 
 # Warning: The database defined as "test" will be erased and
@@ -17,14 +16,13 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: root
+  database: timer_app_test
   pool: 5
-  username: root
   host: localhost
 
 production:
   adapter: postgresql
   encoding: unicode
-  database: timer_app
+  database: timer_app_production
   pool: 5
-  password:
+  host: localhost

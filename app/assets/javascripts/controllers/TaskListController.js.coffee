@@ -7,14 +7,14 @@
     $scope.list = @listService.find $routeParams.list_id
 
   $scope.addTask = ->
-    raisePriorities()
-    task = @taskService.create(description: $scope.taskDescription)
+    # raisePriorities()
+    task = @taskService.create(name: $scope.taskDescription)
     task.priority = 1
     $scope.list.tasks.unshift(task)
     $scope.taskDescription = ""
 
   $scope.deleteTask = (task) ->
-    lowerPrioritiesBelow(task)
+    # lowerPrioritiesBelow(task)
     @taskService.delete(task)
     $scope.list.tasks.splice($scope.list.tasks.indexOf(task), 1)
 

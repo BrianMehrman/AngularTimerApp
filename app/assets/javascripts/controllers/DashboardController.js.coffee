@@ -2,7 +2,7 @@
 
   $scope.init = ->
     @listsService = new TaskList(serverErrorHandler)
-    $scope.lists = @listsService.all()
+    $scope.lists = @listsService.query()
 
   $scope.createList = (name) ->
     @listsService.create name: name, (list) ->

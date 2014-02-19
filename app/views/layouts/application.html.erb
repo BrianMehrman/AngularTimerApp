@@ -10,48 +10,47 @@
   </head>
   <body ng-app="timerApp">
 
-    <div id="container" class="container">
-      <div id="user_nav">
-        <% if user_signed_in? %>
-          Logged in as <strong><%= current_user.email %></strong>.
-          <%= link_to 'Edit profile', edit_user_registration_path %> |
-          <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-        <% else %>
-          <%= link_to "Sign up", new_user_registration_path %> |
-          <%= link_to "Log in", new_user_session_path %>
-        <% end %>
-      </div>
 
-      <% flash.each do |name, msg| %>
-        <%= content_tag :div, msg, id: "flash_#{name}" %>
-      <% end %>
+    <% flash.each do |name, msg| %>
+      <%= content_tag :div, msg, id: "flash_#{name}" %>
+    <% end %>
 
-      <div class="navbar navbar-fixed-top">
-        <div class="navbar-inner">
-          <div class="container">
-            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </a>
-
-            <% if content_for?(:header) %>
-              <%= yield :header %>
+    <div class="navbar navbar-fixed-top" role="navigation">
+      <div class="navbar-inner">
+        <div class="container">
+          <div id="user_nav">
+            <% if user_signed_in? %>
+              Logged in as <strong><%= current_user.email %></strong>.
+              <%= link_to 'Edit profile', edit_user_registration_path %> |
+              <%= link_to "Logout", destroy_user_session_path, method: :delete %>
             <% else %>
-              <%= render "shared/header" %>
-            <% end -%>
+              <%= link_to "Sign up", new_user_registration_path %> |
+              <%= link_to "Log in", new_user_session_path %>
+            <% end %>
+          </div>
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
 
-            <div class="nav-collapse">
-              <% if content_for?(:navigation) %>
-                <%= yield :navigation %>
-              <% else %>
-                <%= render "shared/navigation" %>
-              <% end -%>
-            </div>
+          <% if content_for?(:header) %>
+            <%= yield :header %>
+          <% else %>
+            <%= render "shared/header" %>
+          <% end -%>
+
+          <div class="nav-collapse">
+            <% if content_for?(:navigation) %>
+              <%= yield :navigation %>
+            <% else %>
+              <%= render "shared/navigation" %>
+            <% end -%>
           </div>
         </div>
       </div>
-
+    </div>
+    <div id="container" class="main container">
       <%= yield %>
     </div>
   </body>

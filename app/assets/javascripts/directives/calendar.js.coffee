@@ -11,6 +11,7 @@ angular.module('timerApp').directive 'calendar', ->
       input = angular.element("<input type='text'>")
       element.parent().append(input)
       hideInput(input)
+
       input
 
     hideInput = (input) ->
@@ -25,6 +26,7 @@ angular.module('timerApp').directive 'calendar', ->
 
     hiddenInput = createHiddenInput()
     hiddenInput.datepicker({dateFormat: 'yy-mm-dd'})
+    hiddenInput.datepicker('hide');
     hiddenInput.datepicker('setDate', scope.model)
 
     element.bind "click", (event) ->

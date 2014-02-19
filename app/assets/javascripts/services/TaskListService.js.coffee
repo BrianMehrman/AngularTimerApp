@@ -21,6 +21,7 @@
       new @service(list: attrs).$update {id: list.id}, (-> null), @errorHandler
 
     all: ->
+      console.log("here")
       @service.query((-> null), @errorHandler)
 
     find: (id, successHandler) ->

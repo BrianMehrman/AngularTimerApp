@@ -1,4 +1,4 @@
-@timerApp.controller "LandingController", ($scope, $routeParams, $location, Task) ->
+@timerApp.controller "LandingController", ($scope, $routeParams, $location, Task, TaskList) ->
 
   $scope.init = ->
     @taskService = new Task(1, serverErrorHandler)

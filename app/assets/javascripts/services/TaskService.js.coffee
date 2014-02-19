@@ -16,7 +16,8 @@
       attrs
 
     delete: (task) ->
-      new @service().$delete {id: task.id}, (-> null), @errorHandler
+      console.log(task)
+      new @service().$delete {id: task.id }, (-> null), @errorHandler
 
     update: (task, attrs) ->
       new @service(task: attrs).$update {id: task.id}, (-> null), @errorHandler

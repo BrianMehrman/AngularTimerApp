@@ -5,11 +5,12 @@
   %div.public_tasks
     %p
       Check out these sample tasks
-    %ul.tasks
-      %li{"ng-class"=>"{completed:task.complete}", "ng-repeat"=>"task in tasks"}
+    %ul.tasks.unstyled
+      %li{:class=>"well","ng-class"=>"{completed:task.complete}", "ng-repeat"=>"task in tasks"}
         %div {{task.name}}
         %div {{task.description}}
-        %div {{task.due_date}}
+        %div {{task.due_date | date:'MM-dd-yyyy HH:MM:ss'}}
 
   %div.try_it
-    %a{:href=>"/home/try_it"}
+    %a{'ng-href'=>"landing#/try_it"}
+      Try It

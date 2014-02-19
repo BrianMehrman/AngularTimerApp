@@ -2,6 +2,11 @@
 .ng-cloak{"ng-init"=>"init()"}
   %h2 Try it out
 
+  %div.return
+    %a{"ng-href"=>"/landing#/"}
+      %i{'class'=>'fa-arrow-left fa'}
+      Back
+
   %div.demo_task_lists
     %p
       Create a sample task list
@@ -10,10 +15,11 @@
         You haven't created any lists yet.
     %ul.list-group
       %li.list-group-item{"ng-repeat"=>"list in lists"}
+        %a{:href=>"/landing#/task_lists/{{list.id}}"}
+          {{list.name}} ({{list.tasks.length}})
         %button.btn.btn-danger.btn-xs.pull-right{:type=>"button", "ng-click"=>"deleteList(list, $index)"}
           %span.glyphicon.glyphicon-ban-circle
-        %a{:href=>"/task_lists/{{list.id}}"}
-          {{list.name}} ({{list.tasks.length}})
+
 
   %form#new_list{"ng-submit"=>"createList(listName)"}
     .input-group
@@ -21,6 +27,4 @@
       %span.input-group-btn
         %button.btn.btn-primary.btn-lg{:type=>"submit"} create list
 
-  %div.return
-    %a{:href=>"/home/landing"}
-      back
+
