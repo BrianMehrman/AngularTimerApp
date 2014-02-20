@@ -16,24 +16,30 @@
       %editablespan{:model=>"list.name", "on-ready"=>"listNameEdited(list.name)", "input-class"=>"form-control", "span-class"=>"list-name"}
 
     %form#new_task{"ng-submit"=>"addTask()"}
-      .input-group
+      .input-append
         %input#taskDescription.form-control.input-lg{:type=>"text", :autofocus=>"autofocus", :placeholder=>"Task description", :maxlength=>"255", "ng-model"=>"taskDescription", "data-non-blank"=>""}
-        %span.input-group-btn
-          %button.btn.btn-primary.btn-lg{:type=>"submit"} add
-    %ul.list-group{"ng-model"=>"list.tasks"}
-      %li.well.list-group-item{"ng-repeat"=>"task in list.tasks | orderBy:sortMethod", "ng-class"=>"{completed: task.completed, draggable: sortMethod == 'priority'}"}
-        .task-name
-          {{task.name}}
-        .task-completed
-          %input{:type=>"checkbox", "ng-model"=>"task.completed", "ng-change"=>"toggleTask(task)"}
+        %button.btn.btn-primary.btn-lg{:type=>"submit"} add
+    %ul.list-group.row-fluid{"ng-model"=>"list.tasks"}
+      %li.well.list-group-item.span4{"ng-repeat"=>"task in list.tasks | orderBy:sortMethod", "ng-class"=>"{completed: task.completed, draggable: sortMethod == 'priority'}"}
+        %label.checkbox
+          .task-completed
+            %input{:type=>"checkbox", "ng-model"=>"task.completed", "ng-change"=>"toggleTask(task)"}
+          %span.task-name
+            {{task.name}}
+          |
+          %span.task-due-date{"ng-show"=>"task.due_date"}
+            %small
+              Due date: {{task.due_date | date:'MM/dd/yyyy @ h:mma'}}
+
         .task-description
           %editablespan{:model=>"task.description", "on-ready"=>"taskEdited(task)", "input-class"=>"form-control"}
-        .task-buttons.pull-right
-          %button.btn.btn-danger.btn-xs.pull-right{:type=>"button", "ng-click"=>"deleteTask(task)"}
-            %span.glyphicon.glyphicon-ban-circle
-          %calendar{:model=>"task.due_date", "on-change"=>"dueDatePicked(task)"}
-            %button.btn.btn-info.btn-xs.pull-right{:type=>"button"}
+
+        .task-buttons.row-fluid
+          %calendar.span1{:model=>"task.due_date", "on-change"=>"dueDatePicked(task)"}
+            %button.btn.btn-info.btn-xs{:type=>"button"}
               %span.glyphicon.glyphicon-time
-        .task-due-date{"ng-show"=>"task.due_date"}
-          %small
-            Due date: {{task.due_date}}
+                %i.fa.fa-calendar
+          .delete-btn.span1.offset1
+            %button.btn.btn-danger.btn-xs{:type=>"button", "ng-click"=>"deleteTask(task)"}
+              %span.glyphicon.glyphicon-ban-circle
+                %i.fa.fa-trash-o

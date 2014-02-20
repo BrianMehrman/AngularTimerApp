@@ -13,18 +13,18 @@
     %ul.list-group{"ng-show"=>"lists == 0"}
       %li.list-group-item
         You haven't created any lists yet.
-    %ul.list-group
+    %ul.list-group.unstyled
       %li.list-group-item{"ng-repeat"=>"list in lists"}
-        %a{:href=>"/landing#/task_lists/{{list.id}}"}
-          {{list.name}} ({{list.tasks.length}})
-        %button.btn.btn-danger.btn-xs.pull-right{:type=>"button", "ng-click"=>"deleteList(list, $index)"}
-          %span.glyphicon.glyphicon-ban-circle
-
+        %p.row-fluid
+          %a.span3{:href=>"/landing#/task_lists/{{list.id}}"}
+            {{list.name}} ({{list.tasks.length}})
+          %button.btn.btn-danger.btn-xs.span1{:type=>"button", "ng-click"=>"deleteList(list, $index)"}
+            %span.glyphicon.glyphicon-ban-circle
+              %i.fa.fa-trash-o
 
   %form#new_list{"ng-submit"=>"createList(listName)"}
-    .input-group
+    .input-append
       %input#taskDescription.form-control.input-lg{:type=>"text", :autofocus=>"autofocus", :placeholder=>"List name", :maxlength=>"255", "ng-model"=>"listName", "data-non-blank"=>""}
-      %span.input-group-btn
-        %button.btn.btn-primary.btn-lg{:type=>"submit"} create list
+      %button.btn.btn-primary.btn-lg{:type=>"submit"} create list
 
 
